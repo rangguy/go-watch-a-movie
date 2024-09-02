@@ -5,37 +5,22 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    let moviesList = [
-      {
-        id: 1,
-        title: "Queen of Tears",
-        release_date: "2024-05-08",
-        runTime: 62,
-        mpaa_rating: "R",
-        desciption:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo illo, accusamus neque sint dicta mollitia rerum possimus, odio officia aperiam optio cumque. Repellendus eveniet omnis et cum voluptate, animi quos?",
-      },
-      {
-        id: 2,
-        title: "Love Next Door",
-        release_date: "2024-08-11",
-        runTime: 59,
-        mpaa_rating: "R",
-        desciption:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo illo, accusamus neque sint dicta mollitia rerum possimus, odio officia aperiam optio cumque. Repellendus eveniet omnis et cum voluptate, animi quos?",
-      },
-      {
-        id: 3,
-        title: "Hometown Chacha",
-        release_date: "2023-11-20",
-        runTime: 68,
-        mpaa_rating: "PG-13",
-        desciption:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo illo, accusamus neque sint dicta mollitia rerum possimus, odio officia aperiam optio cumque. Repellendus eveniet omnis et cum voluptate, animi quos?",
-      },
-    ];
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
 
-    setMovies(moviesList);
+    const requestOptions = {
+      method: "GET",
+      headers: headers,
+    };
+
+    fetch(`/movies`, requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        setMovies(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
