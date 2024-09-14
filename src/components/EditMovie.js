@@ -3,7 +3,7 @@ import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import Input from "./form/Input";
 import Select from "./form/Select";
 import Checkbox from "./form/Checkbox";
-import TextArea from "./form/TextArea";
+import TextArea from "./TextArea";
 import Swal from "sweetalert2";
 
 const EditMovie = () => {
